@@ -1,6 +1,6 @@
 {
     "redirects": [
-      { "source": "https://www.crmforceplus.com/", "destination": "https://www.crmfrontier.com/", "statusCode": 301 }
+      { "source": "www.crmforceplus.com", "destination": "www.crmfrontier.com", "statusCode": 301 }
     ]
   }
   
