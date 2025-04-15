@@ -5,14 +5,14 @@ const nextConfig = {
   trailingSlash: true,
   output: "standalone",
   env: {
-    NEXT_PUBLIC_SITE_URL:'https://www.crmfrontier.com/',
-    NEXT_PUBLIC_BLOG_API_URL:'https://crmfoceplus-backend.onrender.com/api/frontend/blogs',
-    NEXT_PUBLIC_BLOG_PREVIEW_API_URL:'https://crmfoceplus-backend.onrender.com/api/frontend/blogs/preview',
-    NEXT_PUBLIC_CATEGORY_API_URL:'https://crmfoceplus-backend.onrender.com/api/frontend/blog/categories',
-    NEXT_PUBLIC_AUTHOR_API_URL:'https://crmfoceplus-backend.onrender.com/api/frontend/blog/authors',
-    NEXT_PUBLIC_AUTHOR_BLOG_API_URL:'https://crmfoceplus-backend.onrender.com/api/frontend/blogs/author/',
-    NEXT_PUBLIC_BLOG_API_Image:'https://crmfoceplus-backend.onrender.com/uploads',
-    NEXT_PUBLIC_BLOG_API_Image_profilePics:'https://crmfoceplus-backend.onrender.com/uploads'
+    NEXT_PUBLIC_SITE_URL: 'https://www.crmfrontier.com/',
+    NEXT_PUBLIC_BLOG_API_URL: 'https://crmfoceplus-backend.onrender.com/api/frontend/blogs',
+    NEXT_PUBLIC_BLOG_PREVIEW_API_URL: 'https://crmfoceplus-backend.onrender.com/api/frontend/blogs/preview',
+    NEXT_PUBLIC_CATEGORY_API_URL: 'https://crmfoceplus-backend.onrender.com/api/frontend/blog/categories',
+    NEXT_PUBLIC_AUTHOR_API_URL: 'https://crmfoceplus-backend.onrender.com/api/frontend/blog/authors',
+    NEXT_PUBLIC_AUTHOR_BLOG_API_URL: 'https://crmfoceplus-backend.onrender.com/api/frontend/blogs/author/',
+    NEXT_PUBLIC_BLOG_API_Image: 'https://crmfoceplus-backend.onrender.com/uploads',
+    NEXT_PUBLIC_BLOG_API_Image_profilePics: 'https://crmfoceplus-backend.onrender.com/uploads'
   },
   images: {
     formats: ["image/avif", "image/webp"],
@@ -28,20 +28,21 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96],
   },
 
-  // async headers() {
-  //   return [
-  //     {
-  //       source: "/:path*",
-  //       headers: [
-  //         {
-  //           key: "Cache-Control",
-  //           // value: "public, max-age=31536000, immutable",
-  //           value: "no-store, no-cache, must-revalidate, proxy-revalidate",
-  //         },
-  //       ],
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.crmforceplus.com',
+          },
+        ],
+        destination: 'https://www.crmfrontier.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
 
   eslint: {
     ignoreDuringBuilds: true,
